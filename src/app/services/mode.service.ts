@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModeService {
 
-  private url = 'http://localhost:8080/';
+  // private url = 'http://localhost:8080/';
+  baseUrl = environment.baseUrl;
+
   private token: string = localStorage.getItem("token");
 
  
@@ -34,7 +37,7 @@ export class ModeService {
   }
 
   public getClientTypeRest(token: string): Observable<String> {
-    return this.httpClient.get<String>(this.url + "api/getAccount/"+ token ,{ responseType: 'json' } );
+    return this.httpClient.get<String>(this.baseUrl + "api/getAccount/"+ token ,{ responseType: 'json' } );
   }
 
 

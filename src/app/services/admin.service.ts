@@ -6,6 +6,7 @@ import { Company } from '../models/company';
 import { Coupon } from '../models/coupon';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { ModeService } from './mode.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
