@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  baseUrl: 'https://https://coupon-heroku.herokuapp.com/'
 };

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ModeService {
 
-  private url = 'http://localhost:8080/api/';
+  private url = 'http://localhost:8080/';
   private token: string = localStorage.getItem("token");
 
  
@@ -34,7 +34,7 @@ export class ModeService {
   }
 
   public getClientTypeRest(token: string): Observable<String> {
-    return this.httpClient.get<String>(this.url + "getAccount/"+ token ,{ responseType: 'json' } );
+    return this.httpClient.get<String>(this.url + "api/getAccount/"+ token ,{ responseType: 'json' } );
   }
 
 

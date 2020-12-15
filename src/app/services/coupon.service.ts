@@ -14,7 +14,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class CouponService {
 
     
-    private url = 'http://localhost:8080/api/';
+    private url = 'http://localhost:8080/';
 
   constructor(public datepipe: DatePipe, private httpClient: HttpClient) { }
 
@@ -23,68 +23,24 @@ export class CouponService {
   // }
 
   public getAllCouponsRest(): Observable<Coupon[]> {
-    return this.httpClient.get<Coupon[]>(this.url  + "getAllCoupons", {withCredentials: true});
+    return this.httpClient.get<Coupon[]>(this.url  + "api/getAllCoupons", {withCredentials: true});
   }
   public getAllCoup(token: String): Observable<Coupon[]> {
-    return this.httpClient.get<Coupon[]>(this.url + "admin/" + token + "/getAllCoup",{withCredentials: true});}
+    return this.httpClient.get<Coupon[]>(this.url + "api/admin/" + token + "/getAllCoup",{withCredentials: true});}
 
 
   public getCouponByIdRest(id: number): Observable<Coupon> {
-    return this.httpClient.get<Coupon>(this.url +"getCouponById/" + id,{withCredentials: true});
+    return this.httpClient.get<Coupon>(this.url +"api/getCouponById/" + id,{withCredentials: true});
   }
   public getCouponByCategoryRest(category: number): Observable<Coupon[]> {
-    return this.httpClient.get<Coupon[]>(this.url  + "getAllCouponsByCategory/"+ category,{withCredentials: true});
+    return this.httpClient.get<Coupon[]>(this.url  + "api/getAllCouponsByCategory/"+ category,{withCredentials: true});
   }
   public getCouponByCustIdRest(token: String): Observable<Coupon> {
-    return this.httpClient.get<Coupon>(this.url +"getCouponById/" + token,{withCredentials: true});
+    return this.httpClient.get<Coupon>(this.url +"api/getCouponById/" + token,{withCredentials: true});
   }
   
   public getAllCompanyCouponsR(id: number): Observable<Coupon[]> {
     return this.httpClient.get<Coupon[]>(this.url + "comCoup/" + id, { withCredentials: true });
   }
-
- 
-
-
- 
-
-
-
-
-  
- /* public getAllCoupon(): Coupon[]{
-    const arr: Coupon[] = [];
-    let start_date = this.datepipe.transform(new Date(1209, 2, 27), 'MM-dd-yyyyy')
-    let end_date = this.datepipe.transform(new Date(1989, 2, 27), 'MM-dd-yyyyy')
-
-    arr.push(new Coupon(1, 20, 1, "bigrafh",end_date,  "http://", 1000, start_date, "KrasnoeSol"));
-      arr.push(new Coupon(2, 30, 2, "roman", end_date, "http://", 1100, start_date,"Reed Elsevier"));
-      arr.push(new Coupon(3,  40, 3, "detective", end_date, "http://", 1200, start_date,"Thomson Reuters"));
-    return arr;
-  }
-
-  public getAllCouponAsync3( ): Observable<Coupon[]>{
-    return Observable.create(observable => {
-      setTimeout(()=>{
-        try{
-          const arr: Coupon[] = [];
-          let end_date = this.datepipe.transform(new Date(1989, 2, 27), 'MM-dd-yyyyy')
-          let start_date = this.datepipe.transform(new Date(1209, 2, 27), 'MM-dd-yyyyy')
-
-           arr.push(new Coupon(1, 20, 1, "bigrafh",end_date,  "http://", 1000, start_date, "KrasnoeSol"));
-           arr.push(new Coupon(2, 30, 2, "roman", end_date, "http://", 1100, start_date,"Reed Elsevier"));
-           arr.push(new Coupon(3,  40, 3, "detective", end_date, "http://", 1200, start_date,"Thomson Reuters"));
-          observable.next(arr);
-        }
-        catch (err){
-          observable.error(err);
-          } 
-      }, 3000);
-      observable.next()
-    }); 
-  }
-  
-*/
-
 
   }
